@@ -1,34 +1,34 @@
-﻿{
-    "schemaVersion":  1,
-    "generatedAt":  "2026-08-24T18:11:08.0707260Z",
-    "pluginCount":  3,
-    "plugins":  [
-                    {
-                        "pluginId":  "com.example.plugin-sdk",
-                        "name":  "插件开发 SDK 示例",
-                        "version":  "1.0.0",
-                        "author":  "libra",
-                        "description":  "标准示例插件：前端展示所有可调用组件与 API（活文档），Agent 端模块展示所有平台 API 与多平台 #if 写法。",
-                        "file":  "plugin-sdk.zip",
-                        "size":  12966
-                    },
-                    {
-                        "pluginId":  "com.libra.aitoken",
-                        "name":  "AI APIKey Recon",
-                        "version":  "1.0.0",
-                        "author":  "libra",
-                        "description":  "扫描本机AI Agent的 API Key。",
-                        "file":  "aitoken.zip",
-                        "size":  1177453
-                    },
-                    {
-                        "pluginId":  "com.libra.qqkey",
-                        "name":  "QQ ClientKey Recon",
-                        "version":  "1.0.0",
-                        "author":  "libra",
-                        "description":  "探测本机 QQ ClientKey",
-                        "file":  "qqkey.zip",
-                        "size":  1696677
-                    }
-                ]
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-24T18:21:22.8879959Z",
+  "pluginCount": 3,
+  "plugins": [
+    {
+      "pluginId": "com.example.plugin-sdk",
+      "name": "插件开发 SDK 示例",
+      "version": "1.0.0",
+      "author": "libra",
+      "description": "标准示例插件：前端展示所有可调用组件与 API（活文档），Agent 端模块展示所有平台 API 与多平台 #if 写法。",
+      "file": "plugin-sdk.zip",
+      "size": 12966
+    },
+    {
+      "pluginId": "com.libra.aitoken",
+      "name": "AI APIKey Recon",
+      "version": "1.0.0",
+      "author": "libra",
+      "description": "扫描本机AI Agent的 API Key。",
+      "file": "aitoken.zip",
+      "size": 1177453
+    },
+    {
+      "pluginId": "com.libra.qqkey",
+      "name": "QQ ClientKey Recon",
+      "version": "1.0.0",
+      "author": "libra",
+      "description": "探测本机 QQ ClientKey",
+      "file": "qqkey.zip",
+      "size": 1696677
+    }
+  ]
 }
