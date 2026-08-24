@@ -1,0 +1,35 @@
+name: Build Plugin Index
+
+on:
+  push:
+    paths:
+      - '*.zip'
+      - 'build-index.ps1'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    name: Rebuild index.json from zips
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate index.json
+        shell: pwsh
+        run: ./build-index.ps1
+
+      - name: Commit index.json if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet index.json; then
+            echo "index.json is up to date"
+          else
+            git add index.json
+            git commit -m "ci: rebuild plugin index"
+            git push
+          fi
