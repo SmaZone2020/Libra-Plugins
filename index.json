@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-24T18:56:15.9849444Z",
+  "generatedAt": "2026-08-25T05:43:49.8904106Z",
   "pluginCount": 3,
   "plugins": [
     {
@@ -28,7 +28,7 @@
       "author": "libra",
       "description": "探测本机 QQ ClientKey",
       "file": "qqkey.zip",
-      "size": 1713768
+      "size": 1725034
     }
   ]
 }
