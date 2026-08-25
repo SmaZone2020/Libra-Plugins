@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-25T06:47:18.5555310Z",
+  "generatedAt": "2026-08-25T07:38:14.1884071Z",
   "pluginCount": 3,
   "plugins": [
     {
       "pluginId": "com.example.plugin-sdk",
       "name": "插件开发 SDK 示例",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "libra",
-      "description": "标准示例插件：前端展示所有可调用组件与 API（活文档），Agent 端模块展示所有平台 API 与多平台 #if 写法。",
+      "description": "全能力演示插件（活文档）：Agent 端 Rhai 多平台 API、服务端 C# 脚本 11 个函数、前端 HeroUI/宿主 API/市场 全部可选项。",
       "file": "plugin-sdk.zip",
-      "size": 12966
+      "size": 27819
     },
     {
       "pluginId": "com.libra.aitoken",
