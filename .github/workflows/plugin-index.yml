@@ -3,7 +3,7 @@ name: Build Plugin Index
 on:
   push:
     paths:
-      - '*.zip'
+      - 'plugins/**/*.zip'
       - 'build-index.ps1'
       - '.github/workflows/**'
   workflow_dispatch:

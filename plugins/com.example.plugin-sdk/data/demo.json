@@ -1,0 +1,10 @@
+{
+  "pluginId": "com.example.plugin-sdk",
+  "name": "插件开发 SDK 示例",
+  "version": "2.0.0",
+  "note": "演示数据：随包分发，服务端 file 函数可读",
+  "howToCall": "POST /api/plugin/com.example.plugin-sdk/file  { \"name\": \"data/demo.json\" }",
+  "features": ["配置随包分发", "脚本可读取", "前端也可经 file 函数间接获取"],
+  "threshold": 42,
+  "tags": ["sdk", "demo", "data"]
+}

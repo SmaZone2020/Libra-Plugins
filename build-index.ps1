@@ -1,24 +1,28 @@
 # build-index.ps1 - plugin repository index generator
 #
-# Scans every *.zip in this directory (Libra-Plugins/), reads the meta.json
+# Recursively scans plugins/**/*.zip under this repository, reads the meta.json
 # inside each package, and writes index.json (pluginId / name / version /
-# author / description / file / size). Used by CI/CD (GitHub Actions) to
-# rebuild the index whenever a zip changes; can also be run locally.
+# author / description / file / size). `file` carries the zip's path relative
+# to the plugins/ directory (e.g. com.libra.qqkey/qqkey.zip) so the server's
+# marketplace download endpoint and the GitHub raw URLs can address subdirectories.
+# Used by CI/CD (GitHub Actions) to rebuild the index whenever a zip changes;
+# can also be run locally.
 #
 # Usage:
 #   pwsh -File ./build-index.ps1   (run from anywhere; script dir is the repo root)
 
 $ErrorActionPreference = 'Stop'
 
-# Script directory = repository root (zips and index.json live here)
+# Script directory = repository root (index.json lives here; zips live under plugins/)
 $Dir = Split-Path -Parent $MyInvocation.MyCommand.Path
 if ([string]::IsNullOrWhiteSpace($Dir)) { $Dir = Get-Location }
+$PluginsDir = Join-Path $Dir 'plugins'
 
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 $plugins = @()
 
-foreach ($zipPath in (Get-ChildItem -Path $Dir -Filter '*.zip' | Sort-Object Name)) {
+foreach ($zipPath in (Get-ChildItem -Path $PluginsDir -Filter '*.zip' -Recurse | Sort-Object FullName)) {
     $zip = $null
     try {
         $zip = [System.IO.Compression.ZipFile]::OpenRead($zipPath.FullName)
@@ -41,13 +45,21 @@ foreach ($zipPath in (Get-ChildItem -Path $Dir -Filter '*.zip' | Sort-Object Nam
             continue
         }
 
+        # Relative path from plugins/ dir, forward slashes (matches GitHub raw URL shape)
+        $prefix = $PluginsDir.TrimEnd('\') + '\'
+        $relPath = $zipPath.FullName
+        if ($relPath.StartsWith($prefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+            $relPath = $relPath.Substring($prefix.Length)
+        }
+        $relPath = $relPath.Replace('\', '/')
+
         $plugins += [PSCustomObject]@{
             pluginId    = [string]$meta.pluginId
             name        = [string]$meta.name
             version     = [string]$meta.version
             author      = [string]$meta.author
             description = [string]$meta.description
-            file        = $zipPath.Name
+            file        = $relPath
             size        = $zipPath.Length
         }
     }
