@@ -3,8 +3,9 @@
 # Recursively scans plugins/**/*.zip under this repository, reads the meta.json
 # inside each package, and writes index.json (pluginId / name / version /
 # author / description / file / size). `file` carries the zip's path relative
-# to the plugins/ directory (e.g. com.libra.qqkey/qqkey.zip) so the server's
-# marketplace download endpoint and the GitHub raw URLs can address subdirectories.
+# to the repository root (e.g. plugins/com.libra.qqkey/qqkey.zip) so the
+# frontend can append it directly to the GitHub raw base URL:
+#   https://github.com/<owner>/<repo>/raw/refs/heads/main/plugins/<id>/<file>.zip
 # Used by CI/CD (GitHub Actions) to rebuild the index whenever a zip changes;
 # can also be run locally.
 #
@@ -45,13 +46,15 @@ foreach ($zipPath in (Get-ChildItem -Path $PluginsDir -Filter '*.zip' -Recurse |
             continue
         }
 
-        # Relative path from plugins/ dir, forward slashes (matches GitHub raw URL shape)
+        # Relative path from plugins/ dir, prefixed with "plugins/" and using
+        # forward slashes — matches the standard GitHub raw download URL shape:
+        #   https://github.com/<owner>/<repo>/raw/refs/heads/main/plugins/<id>/<file>.zip
         $prefix = $PluginsDir.TrimEnd('\') + '\'
         $relPath = $zipPath.FullName
         if ($relPath.StartsWith($prefix, [System.StringComparison]::OrdinalIgnoreCase)) {
             $relPath = $relPath.Substring($prefix.Length)
         }
-        $relPath = $relPath.Replace('\', '/')
+        $relPath = ('plugins/' + $relPath).Replace('\', '/')
 
         $plugins += [PSCustomObject]@{
             pluginId    = [string]$meta.pluginId
