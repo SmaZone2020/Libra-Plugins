@@ -1,6 +1,6 @@
 ﻿{
     "schemaVersion":  1,
-    "generatedAt":  "2026-08-26T10:40:40.9489876Z",
+    "generatedAt":  "2026-08-26T11:54:21.8543075Z",
     "pluginCount":  3,
     "plugins":  [
                     {
@@ -10,7 +10,7 @@
                         "author":  "libra",
                         "description":  "全能力演示插件（活文档）：Agent 端 JS 多平台 API、服务端 C# 脚本（多文件）、前端宿主 API、docs 在线文档 全部可选项。",
                         "file":  "com.example.plugin-sdk/plugin-sdk.zip",
-                        "size":  38721
+                        "size":  39158
                     },
                     {
                         "pluginId":  "com.libra.aitoken",
