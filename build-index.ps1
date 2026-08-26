@@ -46,15 +46,17 @@ foreach ($zipPath in (Get-ChildItem -Path $PluginsDir -Filter '*.zip' -Recurse |
             continue
         }
 
-        # Relative path from plugins/ dir, prefixed with "plugins/" and using
-        # forward slashes — matches the standard GitHub raw download URL shape:
+        # Path of the zip relative to the repository root, forward slashes —
+        # matches the standard GitHub raw download URL shape:
         #   https://github.com/<owner>/<repo>/raw/refs/heads/main/plugins/<id>/<file>.zip
-        $prefix = $PluginsDir.TrimEnd('\') + '\'
-        $relPath = $zipPath.FullName
-        if ($relPath.StartsWith($prefix, [System.StringComparison]::OrdinalIgnoreCase)) {
-            $relPath = $relPath.Substring($prefix.Length)
+        $repoRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+        $repoRoot = [System.IO.Path]::GetFullPath($repoRoot).TrimEnd('\') + '\'
+        $fullPath = [System.IO.Path]::GetFullPath($zipPath.FullName)
+        $relPath = $fullPath
+        if ($relPath.StartsWith($repoRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+            $relPath = $relPath.Substring($repoRoot.Length)
         }
-        $relPath = ('plugins/' + $relPath).Replace('\', '/')
+        $relPath = $relPath.Replace('\', '/')
 
         $plugins += [PSCustomObject]@{
             pluginId    = [string]$meta.pluginId
