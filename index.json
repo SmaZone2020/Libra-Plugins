@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-26T17:56:07.3103277Z",
+  "generatedAt": "2026-08-26T18:10:50.8186435Z",
   "pluginCount": 4,
   "plugins": [
     {
@@ -9,7 +9,7 @@
       "version": "2.0.0",
       "author": "libra",
       "description": "全能力演示插件（活文档）：Agent 端 JS 多平台 API、服务端 C# 脚本（多文件）、前端宿主 API、docs 在线文档 全部可选项。",
-      "file": "/home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.example.plugin-sdk/plugin-sdk.zip",
+      "file": "plugins//home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.example.plugin-sdk/plugin-sdk.zip",
       "size": 46363
     },
     {
@@ -18,7 +18,7 @@
       "version": "1.0.0",
       "author": "libra",
       "description": "扫描本机AI Agent的 API Key。",
-      "file": "/home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.libra.aitoken/aitoken.zip",
+      "file": "plugins//home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.libra.aitoken/aitoken.zip",
       "size": 1177736
     },
     {
@@ -27,7 +27,7 @@
       "version": "1.0.0",
       "author": "libra",
       "description": "获取 Agent 进程列表，识别目标主机安装的杀毒软件/安全防护产品。",
-      "file": "/home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.libra.av-list/av-list.zip",
+      "file": "plugins//home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.libra.av-list/av-list.zip",
       "size": 10876
     },
     {
@@ -36,7 +36,7 @@
       "version": "1.1.0",
       "author": "libra",
       "description": "探测本机 QQ ClientKey",
-      "file": "/home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.libra.qqkey/qqkey.zip",
+      "file": "plugins//home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.libra.qqkey/qqkey.zip",
       "size": 1685842
     }
   ]
