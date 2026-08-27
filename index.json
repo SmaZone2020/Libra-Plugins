@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-27T08:28:35.9696626Z",
-  "pluginCount": 6,
+  "generatedAt": "2026-08-27T10:56:17.7518444Z",
+  "pluginCount": 5,
   "plugins": [
     {
       "pluginId": "com.example.plugin-sdk",
@@ -29,15 +29,6 @@
       "description": "获取 Agent 进程列表，识别目标主机安装的杀毒软件/安全防护产品。",
       "file": "/home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.libra.av-list/av-list.zip",
       "size": 10876
-    },
-    {
-      "pluginId": "com.libra.browser-stealer",
-      "name": "浏览器数据",
-      "version": "1.0.0",
-      "author": "libra",
-      "description": "读取 Chrome/Edge 浏览器密码与历史记录（DPAPI 解密），支持搜索与 CSV 导出。",
-      "file": "/home/runner/work/Libra-Plugins/Libra-Plugins/plugins/com.libra.browser-stealer/browser-stealer.zip",
-      "size": 90249
     },
     {
       "pluginId": "com.libra.qqkey",
