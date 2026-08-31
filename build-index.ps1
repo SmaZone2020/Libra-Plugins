@@ -84,6 +84,8 @@ $index = [PSCustomObject]@{
 }
 
 $indexPath = Join-Path $Dir 'index.json'
-$index | ConvertTo-Json -Depth 5 | Set-Content -Path $indexPath -Encoding UTF8
+# UTF-8 无 BOM(PS 5.1 的 Set-Content -Encoding UTF8 会带 BOM,导致前端 JSON.parse 失败)
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($indexPath, ($index | ConvertTo-Json -Depth 5), $utf8NoBom)
 
 Write-Host "[build-index] wrote $indexPath with $($plugins.Count) plugin(s)"

