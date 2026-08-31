@@ -1,0 +1,492 @@
+/* ============================================================
+   com.libra.browser-stealer — 页面样式（完全自包含，无 Tailwind/HeroUI）
+   深浅色跟随系统 prefers-color-scheme。
+   ============================================================ */
+
+:root {
+  color-scheme: light dark;
+  --bg: #f7f8fa;
+  --card-bg: #ffffff;
+  --bg-subtle: #eef1f5;
+  --fg: #1f2937;
+  --muted: #6b7280;
+  --border: #e2e6ec;
+  --accent: #4f46e5;
+  --accent-soft: #eef0ff;
+  --danger: #dc2626;
+  --chip-bg: #eef1f5;
+  --chip-fg: #374151;
+  --chip-accent-bg: #eef0ff;
+  --chip-accent-fg: #4f46e5;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  --skeleton-shine: #f9fafb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1120;
+    --card-bg: #111a2e;
+    --bg-subtle: #1b2740;
+    --fg: #e5eaf3;
+    --muted: #94a3b8;
+    --border: #26324d;
+    --accent: #818cf8;
+    --accent-soft: #1d2447;
+    --danger: #f87171;
+    --chip-bg: #1b2740;
+    --chip-fg: #cbd5e1;
+    --chip-accent-bg: #1d2447;
+    --chip-accent-fg: #a5b4fc;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    --skeleton-shine: #1c2944;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  padding: 16px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ---------------- 工具栏 ---------------- */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.chip.accent {
+  background: var(--chip-accent-bg);
+  color: var(--chip-accent-fg);
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------------- 按钮 ---------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--fg);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--bg-subtle);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.icon {
+  width: 32px;
+  padding: 0;
+}
+
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.btn.primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+  background: var(--accent);
+}
+
+/* ---------------- 搜索 ---------------- */
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-input::placeholder {
+  color: var(--muted);
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* ---------------- 提示消息 ---------------- */
+
+.message {
+  margin: 6px 0;
+  font-size: 13px;
+}
+
+.message.error {
+  color: var(--danger);
+}
+
+.message.hint {
+  color: var(--muted);
+}
+
+/* ---------------- 页签 ---------------- */
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin: 14px 0 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  position: relative;
+  padding: 8px 14px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.tab:hover {
+  color: var(--fg);
+  background: var(--bg-subtle);
+}
+
+.tab.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* ---------------- 导出下拉 ---------------- */
+
+.export-wrap {
+  position: relative;
+}
+
+.export-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  min-width: 180px;
+  padding: 4px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.export-menu button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--fg);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.export-menu button:hover {
+  background: var(--bg-subtle);
+}
+
+/* ---------------- 手风琴分组 ---------------- */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.group {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.group summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+.group summary::-webkit-details-marker {
+  display: none;
+}
+
+.group summary:hover {
+  background: var(--bg-subtle);
+}
+
+.group-icon {
+  display: inline-flex;
+  color: var(--muted);
+}
+
+.group-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  display: inline-flex;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+}
+
+.group[open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* ---------------- 表格 ---------------- */
+
+.table-wrap {
+  overflow-x: auto;
+  border-top: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+th {
+  background: var(--bg-subtle);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:hover td {
+  background: var(--bg-subtle);
+}
+
+.cell-clip {
+  display: block;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cell-clip.url {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  font-size: 12px;
+}
+
+.cell-clip.title {
+  max-width: 250px;
+}
+
+.cell-password {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+}
+
+.masked {
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* ---------------- 骨架屏 / 加载 ---------------- */
+
+.skeleton {
+  height: 64px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-subtle) 25%,
+    var(--skeleton-shine) 50%,
+    var(--bg-subtle) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+.skeleton.small {
+  height: 32px;
+  margin: 10px 12px;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.scroll-sentinel {
+  min-height: 4px;
+}
+
+/* ---------------- 空状态 ---------------- */
+
+.empty {
+  padding: 40px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 240px;
+  color: var(--muted);
+}
+
+.empty-state-icon {
+  display: inline-flex;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 14px;
+}
