@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>微信文件</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <main id="app"></main>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal-close" data-close-modal aria-label="关闭"></button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- 桥 SDK 必须先于页面逻辑加载 -->
+  <script src="_bridge.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

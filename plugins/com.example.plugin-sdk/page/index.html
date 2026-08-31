@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>插件开发 SDK 示例</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="app">
+    <header class="hero card">
+      <h1>插件开发 SDK 示例（全能力演示）</h1>
+      <p>这是一个"活文档"插件：五个页签覆盖插件能用的所有能力与可选项 —— Agent 端
+        <code>module/plugin_sdk.js</code>（QuickJS，多平台）、服务端
+        <code>service/*.cs</code>（C# 脚本多文件，经
+        <code>/api/plugin/com.example.plugin-sdk/&lt;fn&gt;</code> 驱动）、
+        前端 <code>page/index.html</code>（原生 HTML + LibraPluginHost + 在线文档渲染）。
+      </p>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="sdk sections">
+      <button class="tab is-active" data-tab="overview" role="tab" aria-selected="true">总览</button>
+      <button class="tab" data-tab="docs" role="tab" aria-selected="false">文档</button>
+      <button class="tab" data-tab="agent" role="tab" aria-selected="false">Agent 端</button>
+      <button class="tab" data-tab="service" role="tab" aria-selected="false">服务端脚本</button>
+      <button class="tab" data-tab="frontend" role="tab" aria-selected="false">前端 API</button>
+    </nav>
+
+    <main>
+      <section class="panel is-active" id="panel-overview" role="tabpanel"></section>
+      <section class="panel" id="panel-docs" role="tabpanel"></section>
+      <section class="panel" id="panel-agent" role="tabpanel"></section>
+      <section class="panel" id="panel-service" role="tabpanel"></section>
+      <section class="panel" id="panel-frontend" role="tabpanel"></section>
+    </main>
+  </div>
+
+  <!-- 服务端脚本页签：函数演练结果模态框 -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 id="modal-title"></h3>
+        <button class="modal-close" id="modal-close" type="button" aria-label="关闭">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <noscript><p style="padding:20px">本页面需要启用 JavaScript。</p></noscript>
+
+  <!-- 桥 SDK 必须先于页面逻辑加载 -->
+  <script src="_bridge.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

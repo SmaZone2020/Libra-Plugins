@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>杀软检测</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="app">
+    <section class="card header-card" aria-labelledby="page-title">
+      <div class="header-main">
+        <h1 id="page-title">杀软检测</h1>
+        <p class="desc">获取 Agent 进程列表，按内置杀软进程库匹配目标主机安装的杀毒软件 / 安全防护产品。</p>
+      </div>
+      <div class="header-actions">
+        <button id="run-btn" class="btn btn-primary" type="button" disabled aria-busy="false">
+          <span class="btn-spinner" hidden></span>
+          <span id="run-btn-label">检测杀毒软件</span>
+        </button>
+        <span id="no-agent-chip" class="chip chip-warning" hidden>请先在顶部选择设备</span>
+      </div>
+    </section>
+
+    <section id="stats" class="chips-row" aria-live="polite" hidden></section>
+
+    <section id="error-card" class="card card-error" role="alert" hidden>
+      <div class="alert-danger">
+        <span class="alert-icon" aria-hidden="true">!</span>
+        <span id="error-text"></span>
+      </div>
+    </section>
+
+    <section id="empty-card" class="card" hidden>
+      <p id="empty-text" class="empty-text"></p>
+    </section>
+
+    <section id="result-card" class="card" hidden>
+      <h2 class="card-title">检测结果</h2>
+      <div class="table-wrap">
+        <table id="result-table" aria-label="av products">
+          <caption class="sr-only">杀毒软件检测结果</caption>
+          <thead>
+            <tr>
+              <th scope="col">杀软产品</th>
+              <th scope="col">进程数</th>
+              <th scope="col">进程列表</th>
+            </tr>
+          </thead>
+          <tbody id="result-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="_bridge.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
