@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "pluginId": "com.libra.av-list",
+  "name": "杀软检测",
+  "version": "1.0.0",
+  "author": "libra",
+  "description": "获取 Agent 进程列表，识别目标主机安装的杀毒软件/安全防护产品。",
+  "entry": {
+    "route": "av-list",
+    "label": "nav.avList",
+    "icon": "Shield",
+    "apiRoot": "/api/plugins/com.libra.av-list"
+  },
+  "i18n": {
+    "zh": { "nav.avList": "杀软检测" },
+    "en": { "nav.avList": "AV Recon" }
+  },
+  "actions": [
+    {
+      "action": "detect",
+      "label": "检测杀毒软件",
+      "method": "POST",
+      "argsSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "module": {
+        "kind": "script",
+        "name": "main",
+        "op": "detect",
+        "entry": "main"
+      }
+    }
+  ]
+}
